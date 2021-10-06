@@ -50,11 +50,11 @@ public class VaccineManagement {
                             Injection added = injections.addNewInjection();
                             if (added != null) {
                                 System.out.println("Add new injection successfully.");
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
-                                System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine ID|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "");
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
+                                System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine%13s|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "", "");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
                                 added.show();
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
                             }
                             int subChoice = subMenu.getChoice("Do you want to continue adding another injection information?");
                             if (subChoice == 2) break;
@@ -71,11 +71,11 @@ public class VaccineManagement {
                             Injection updated = injections.updateInjectionByID(ID);
                             if (updated != null) {
                                 System.out.println("Update injection successfully.");
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
-                                System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine ID|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "");
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
+                                System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine%13s|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "", "");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
                                 updated.show();
-                                System.out.println("---------------------------------------------------------------------------------------------------------");
+                                System.out.println("-------------------------------------------------------------------------------------------------------------------");
                             }
                             int subChoice = subMenu.getChoice("Do you want to continue updating another injection information?");
                             if (subChoice == 2) break;
@@ -125,6 +125,11 @@ public class VaccineManagement {
                 switch (choice) {
                     case 1:
                         while (true) {
+                            if (injections.size() == 0){
+                                System.out.println("No student has been vaccinated!");
+                                break;
+                            }
+
                             String ID = Validator.getNoBlankString("Enter student's ID: ");
                             injections.showInjectionByStudentID(ID);
                             int subChoice = subMenu.getChoice("Do you want to continue searching another injection information?");
@@ -143,5 +148,19 @@ public class VaccineManagement {
 
         System.out.println("Goodbye <3");
         System.gc();
+
+//        VaccineList vaccines = new VaccineList();
+//        vaccines.clear();
+//        vaccines.add(new Vaccine("V001", "Pfizer", "Mỹ"));
+//        vaccines.add(new Vaccine("V002", "BioNTech", "Đức"));
+//        vaccines.add(new Vaccine("V003", "Moderna", "Mỹ"));
+//        vaccines.add(new Vaccine("V004", "Janssen", "Mỹ"));
+//        vaccines.add(new Vaccine("V005", "AstraZeneca", "Anh & Thụy Điển"));
+//        vaccines.add(new Vaccine("V006", "Sputnik V", "Nga"));
+//        vaccines.add(new Vaccine("V007", "Sinopharm", "Trung Quốc"));
+//        vaccines.add(new Vaccine("V008", "Abdala", "Cuba"));
+//        vaccines.add(new Vaccine("V009", "Nanocovax", "Việt Nam"));
+//        vaccines.add(new Vaccine("V010", "Sinovac", "Trung Quốc"));
+//        vaccines.saveToFile();
     }
 }

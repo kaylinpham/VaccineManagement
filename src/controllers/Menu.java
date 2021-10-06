@@ -13,7 +13,7 @@ public class Menu<E> extends ArrayList<E> {
     }
 
     public int getChoice(String... message) {
-        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
         if (message.length != 0) System.out.println(message[0]);
 
         if (this.size() == 0) {

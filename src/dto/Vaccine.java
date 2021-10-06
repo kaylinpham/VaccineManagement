@@ -29,11 +29,11 @@ public class Vaccine implements Serializable {
 
     @Override
     public String toString() {
-        return ID + "-" + name;
+        return ID + "-" + name + "-" + origin;
     }
 
     public void show() {
-        System.out.printf("|%8s|%-20s|\n", ID, name);
+        System.out.printf("|%8s|%-20s|-20%|\n", ID, name, origin);
     }
 
     public String getOrigin() {

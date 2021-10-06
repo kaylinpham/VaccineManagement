@@ -1,6 +1,7 @@
 package dto;
 
 import controllers.StudentList;
+import controllers.VaccineList;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ public class Injection implements Serializable {
     private String secondPlace;
 
     private static StudentList students = new StudentList();
+    private static VaccineList vaccines = new VaccineList();
 
     public Injection(String ID, String studentID, String vaccineID, String firstDate, String firstPlace, String secondDate, String secondPlace) {
         this.ID = ID;
@@ -87,6 +89,6 @@ public class Injection implements Serializable {
     }
 
     public void show() {
-        System.out.printf("|%-6s|%-20s|%-10s|%-10s|%-10s|%-15s|%-10s|%-15s|\n", ID, students.getStudentByID(studentID).getName(), studentID, vaccineID, firstDate, firstPlace, secondDate, secondPlace);
+        System.out.printf("|%-6s|%-20s|%-10s|%-20s|%-10s|%-15s|%-10s|%-15s|\n", ID, students.getStudentByID(studentID).getName(), studentID, vaccines.getVaccineByID(vaccineID).getName(), firstDate, firstPlace, secondDate, secondPlace);
     }
 }

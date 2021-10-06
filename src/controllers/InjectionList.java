@@ -51,12 +51,12 @@ public class InjectionList extends ArrayList<Injection> {
     public void showAllInjectedStudents() {
         if (this.size() == 0) System.out.println("No student has been vaccinated!");
         else {
-            System.out.println("---------------------------------------------------------------------------------------------------------");
-            System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine ID|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "");
-            System.out.println("---------------------------------------------------------------------------------------------------------");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
+            System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine%13s|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "", "");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
             for (Injection injection : this)
                 injection.show();
-            System.out.println("---------------------------------------------------------------------------------------------------------");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -80,11 +80,11 @@ public class InjectionList extends ArrayList<Injection> {
             return;
         }
 
-        System.out.println("---------------------------------------------------------------------------------------------------------");
-        System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine ID|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "");
-        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine%13s|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "", "");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
         injection.show();
-        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
     }
 
     public Injection addNewInjection() {
@@ -129,6 +129,15 @@ public class InjectionList extends ArrayList<Injection> {
                 System.out.println("This student has completed 2 injections!");
                 return null;
             } else {
+                Menu confirm = new Menu();
+                confirm.addOptions("Yes", "No");
+                int choice = confirm.getChoice("Do you have vaccine " + vaccines.getVaccineByID(injection.getVaccineID()).getName() + " to vaccinate this student?");
+
+                if (choice == 2) {
+                    System.out.println("Do not have suitable vaccine to inject!");
+                    return null;
+                }
+
                 String secondDate;
                 secondDate = Validator.getDateString("Second date (dd/MM/yyyy): ");
                 if (!Validator.isEnoughDate(injection.getFirstDate(), secondDate, "dd/MM/yyyy")) {
@@ -156,11 +165,11 @@ public class InjectionList extends ArrayList<Injection> {
             System.out.println("Not found injection ID!");
             return null;
         } else {
-            System.out.println("---------------------------------------------------------------------------------------------------------");
-            System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine ID|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "");
-            System.out.println("---------------------------------------------------------------------------------------------------------");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
+            System.out.printf("|ID%4s|Student Name%8s|Student ID|Vaccine%13s|First One |First Place%4s|Second One|Second Place%3s|\n", "", "", "", "", "");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
             injection.show();
-            System.out.println("---------------------------------------------------------------------------------------------------------");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------");
         }
 
         Menu confirm = new Menu();
